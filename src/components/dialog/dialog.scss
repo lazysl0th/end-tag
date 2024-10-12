@@ -1,0 +1,35 @@
+.dialog {
+  border-width: 2px;
+  border-color: var(--border-color);
+  background-color: var(--bg-color);
+  padding: 30px 40px;
+  gap: 30px;
+  flex-direction: column;
+  color: inherit;
+
+  &[open] {
+    display: flex;
+    inline-size: min(100%, 345px);
+  }
+
+  &::backdrop {
+    background: var(--bg-backdrop-color);
+  }
+
+  &--content {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &--text {
+    font-family: var(--accent-font, serif);
+    font-size: var(--accent-font-size);
+    line-height: 21px;
+  }
+
+  &--button {
+    padding-block: 9px;
+    text-transform: uppercase;
+  }
+}

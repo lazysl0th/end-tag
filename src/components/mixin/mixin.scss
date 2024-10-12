@@ -1,0 +1,15 @@
+@mixin filter($filters, $imageSelector) {
+  @each $filter in $filters {
+    &:nth-of-type(#{index($filters, $filter)}) #{$imageSelector} {
+      filter: $filter;
+    }
+  }
+}
+
+@mixin text-transform-uppercase($quantity, $textSelector) {
+  @for $i from 1 through $quantity {
+    &:nth-of-type(#{$i}) #{$textSelector} {
+      text-transform: uppercase;
+    }
+  }
+}

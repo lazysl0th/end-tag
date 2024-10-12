@@ -1,0 +1,28 @@
+block variables  
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="color-scheme", content="light dark")
+    meta(name="description", content="Страница о пройденном пути в Практикуме.")
+    meta(property="og:title", content="Закрывающий тег")
+    meta(property="og:description", content="Страница о пройденном пути в Практикуме.")
+    meta(property="og:url", content="https://lazysl0th.github.io/end-tag/")
+    meta(property="og:image", content="/images/og.png")
+    link(rel="icon", href="./images/favicon/favicon.ico" sizes="any")
+    link(rel="icon", href="./images/svg/icon.svg" type="image/svg+xml")
+    link(rel="apple-touch-icon", href="./images/favicon/apple-touch-icon.png")
+    link(rel="stylesheet", href="./bundle.css")
+    link(rel="stylesheet", href= pageStylesheet)
+    title Закрывающий тег
+  body.page
+    include ../components/header/header
+    main.content
+      section.content-section
+        block content 
+    include ../components/footer/footer
+    include ../components/dialog/dialog
+    +dialog('dialog-save')
+

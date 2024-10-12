@@ -1,0 +1,8 @@
+header.header.content-section
+    h1.header--title &lt;/html&gt;
+    p.header--subtitle закрывающий тег
+    nav.header--theme-toggler
+        include ../button/button
+        +button('button', 'Темно')&attributes({'class': 'header--theme-button'})
+        +button('button', 'Авто')&attributes({'class': 'header--theme-button'})
+        +button('button', 'Светло')&attributes({'class': 'header--theme-button', 'disabled': 'disabled'})

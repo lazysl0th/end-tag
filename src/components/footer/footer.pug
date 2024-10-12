@@ -1,0 +1,3 @@
+footer.footer.content-section
+    include ../button/button
+    +button('button', 'Сохранить на память', 39, 39, './images/svg/floppy.svg#floppy')&attributes({'class': 'button-withImg footer--button', 'ariaControls': "dialog-save", 'onclick': "window['dialog-save'].showModal();", 'ariaLabel': 'button-save'})

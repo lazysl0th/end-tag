@@ -1,0 +1,183 @@
+@mixin button($type) {
+  @if $type == 'withImg' {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    border: 2px solid var(--border-color);
+  }
+}
+
+.button {
+  font-size: var(--accent-font-size, 14px);
+  font-family: var(--accent-font, serif);
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+
+  &:disabled {
+    position: relative;
+    opacity: 0.6;
+    pointer-events: none;
+
+    &::before {
+      content: '\25B6';
+      inline-size: 14px;
+      block-size: 14px;
+      margin-inline-end: 5px;
+      display: inline-block;
+      animation: arrow 2s steps(2, end) 0s infinite normal forwards running;
+      position: absolute;
+      inset: 0;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+
+  &:focus-visible {
+    outline: none;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    inline-size: 0%;
+    block-size: 2px;
+    background-color: var(--text-color);
+    transition: inline-size 0.3s;
+  }
+
+  &:focus-visible::after {
+    inline-size: 100%;
+  }
+
+  @each $type in 'withImg' {
+    &-#{$type} {
+      @include button($type);
+
+      &:hover {
+        opacity: 1;
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        block-size: 100%;
+        inline-size: 100%;
+        inset: 0;
+        transform: scaleX(0);
+        background-color: var(--border-color);
+        transition: transform 0.5s ease-in-out;
+        transform-origin: left;
+        top: 0;
+        left: 0;
+      }
+
+      &:focus-visible {
+        box-shadow: 2px 2px 0 0 var(--border-color);
+        opacity: 1;
+        transition: box-shadow 0.3s ease;
+      }
+    }
+
+    &-#{$type} &--image {
+      color: var(--button-content-color);
+      z-index: 1;
+
+      &:not(.like-icon) {
+        mix-blend-mode: difference;
+      }
+    }
+
+    &-#{$type} &--span {
+      color: var(--button-content-color);
+      mix-blend-mode: difference;
+      z-index: 1;
+    }
+  }
+
+  &--image.like-icon {
+    .sparks {
+      opacity: 0;
+    }
+
+    .core {
+      transition: fill 0.3s 0.03s;
+      fill: var(--bg-color);
+    }
+
+    .contour {
+      fill: var(--border-color);
+      transition: fill 0.1s;
+    }
+
+    .main-body {
+      transition: fill 0.3s;
+      fill: var(--bg-color);
+    }
+
+    &:hover {
+      .core {
+        fill: var(--border-color);
+        transition: fill 0.3s;
+      }
+
+      .main-body {
+        fill: var(--border-color);
+        transition: fill 0.3s 0.05s;
+      }
+    }
+
+    &:active {
+      .core {
+        fill: var(--heart-color);
+        transition: fill 0.3s;
+      }
+
+      .main-body {
+        fill: var(--heart-color);
+        transition: fill 0.3s 0.05s;
+      }
+    }
+
+    &.is-liked {
+      & .heart {
+        animation: isliked 0.3s ease-in 0.1s alternate;
+        transform-origin: center;
+        overflow: visible;
+      }
+
+      & .contour {
+        fill: var(--heart-color);
+        transition: fill 0.3s 0.06;
+      }
+
+      & .core {
+        fill: var(--heart-color);
+        transition: fill 0.3s;
+      }
+
+      & .main-body {
+        fill: var(--heart-color);
+        transition: fill 0.3s 0.05s;
+      }
+
+      & .sparks {
+        animation: issparks 0.3s ease-in 0.3s alternate;
+      }
+    }
+  }
+}

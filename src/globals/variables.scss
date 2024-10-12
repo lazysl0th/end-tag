@@ -1,0 +1,119 @@
+$main-font: 'Inter';
+$main-font-variable: 'InterVariable';
+$accent-font: 'PressStart2P';
+$font-size: 18px;
+$accent-font-size: 14px;
+$font-weight-text: 400;
+$font-weight-title: 700;
+$accent-font-weight-text: 465;
+$accent-font-weight-title: 785;
+$black-color: #000;
+$white-color: #fff;
+$gray-color: #d3d3d3;
+$transparent-color: #0000;
+$light-gray-color: #e7e7e7;
+$brown-color: #1a1a1a;
+$white-opasity-color: #ffffff80;
+$light-green-color: #00cc14;
+$green-color: #007f0c;
+$dark-green-color: #004306;
+$red-color: #f00;
+$black-opacity-color: #000000bf;
+
+:root {
+  /* шрифт */
+  --main-font: #{$main-font};
+  --accent-font: #{$accent-font};
+  --font-weight-text: #{$font-weight-text};
+  --font-weight-title: #{$font-weight-title};
+  --font-size: #{$font-size};
+  --accent-font-size: #{$accent-font-size};
+
+  /* цвет */
+  --bg-color: #{$white-color};
+  --bg-gradient-color-1: #{$gray-color};
+  --transparent-color: #{$transparent-color};
+  --bg-gradient-color-2: #{$light-gray-color};
+  --bg-gradient-color-3: #{$brown-color};
+  --text-color: #{$black-color};
+  --border-color: #{$black-color};
+  --stroke-color: #{$white-opasity-color};
+  --heart-color: #{$red-color};
+  --bg-backdrop-color: #{$black-opacity-color};
+  --button-content-color: #{$white-color};
+
+  font-weight: var(--font-weight-text);
+  color: var(--text-color, #000);
+  background: repeating-linear-gradient(
+      var(--bg-gradient-color-1) 0 2px,
+      var(--transparent-color) 2px 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--bg-gradient-color-1) 0 2px,
+      var(--transparent-color) 2px 4px
+    ),
+    linear-gradient(
+      180deg,
+      var(--bg-gradient-color-2) 0.01%,
+      var(--bg-gradient-color-3)
+    );
+  background-size: cover;
+  background-attachment: fixed;
+
+  @supports (font-variation-settings: normal) {
+    --main-font: #{$main-font-variable};
+
+    font-variation-settings: 'wght' var(--font-weight-text);
+  }
+
+  &.theme-light {
+    /* шрифт */
+    --font-weight-text: #{$font-weight-text};
+    --font-weight-title: #{$font-weight-title};
+
+    /* цвет */
+    --text-color: #{$black-color};
+    --bg-color: #{$white-color};
+    --bg-gradient-color-1: #{$gray-color};
+    --transparent-color: #{$transparent-color};
+    --bg-gradient-color-2: #{$light-gray-color};
+    --bg-gradient-color-3: #{$brown-color};
+    --border-color: #{$black-color};
+    --stroke-color: #{$white-opasity-color};
+    --button-content-color: #{$white-color};
+  }
+
+  &.theme-dark {
+    /* шрифт */
+    --font-weight-text: #{$accent-font-weight-text};
+    --font-weight-title: #{$accent-font-weight-title};
+
+    /* цвет */
+    --text-color: #{$light-green-color};
+    --bg-color: #{$black-color};
+    --bg-gradient-color-1: #{$black-color};
+    --bg-gradient-color-2: #{$green-color};
+    --bg-gradient-color-3: #{$dark-green-color};
+    --border-color: #{$light-green-color};
+    --stroke-color: #{$black-color};
+    --button-content-color: #{$light-green-color};
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --font-weight-text: #{$accent-font-weight-text};
+    --font-weight-title: #{$accent-font-weight-title};
+    --text-color: #{$light-green-color};
+    --bg-color: #{$black-color};
+    --bg-gradient-color-1: #{$black-color};
+    --bg-gradient-color-2: #{$green-color};
+    --bg-gradient-color-3: #{$dark-green-color};
+    --border-color: #{$light-green-color};
+    --stroke-color: #{$black-color};
+    --button-content-color: #{$light-green-color};
+
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-weight: var(--font-weight-text);
+  }
+}

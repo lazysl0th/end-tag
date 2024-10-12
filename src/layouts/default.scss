@@ -1,0 +1,21 @@
+@import '../globals/fonts';
+@import '../globals/variables';
+@import '../globals/globals';
+@import '../globals/animation';
+@import '../components/button/button';
+@import '../components/header/header';
+@import '../components/footer/footer';
+@import '../components/dialog/dialog';
+
+.content-section {
+  inline-size: clamp(375px, 100%, 700px);
+  margin-inline: auto;
+}
+
+.content {
+  .content-section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+  }
+}

@@ -1,0 +1,14 @@
+mixin card(title, imgUrl, watermark, text1, text2)
+  article.card
+    h2.card--title= title
+    figure.card--figure
+      img.card--image(src=imgUrl, alt=title)
+      figcaption
+        p.card--watermark= watermark
+    .card-text
+      p= text1
+      p= text2
+    .card--buttons
+      include ../button/button
+      +button('button', '', 39, 36)&attributes({'class': 'card--button button-withImg', 'id': 'like-icon', 'ariaLabel': 'button-heart'})
+      +button('button', 'Like', '', '')&attributes({'class': 'card--button button-withImg', 'ariaLabel': 'button-like'})

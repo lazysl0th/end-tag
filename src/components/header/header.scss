@@ -1,0 +1,34 @@
+.header {
+  font-family: var(--accent-font, serif);
+  border: 2px solid var(--border-color, #000);
+  margin-block: 100px;
+  padding-block: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
+  background-color: var(--bg-color, #fff);
+
+  &--title {
+    font-weight: inherit;
+    font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+    padding-block: 95px 20px;
+  }
+
+  &--subtitle {
+    font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+    padding-block-end: 25px;
+  }
+
+  &--theme-toggler {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 14px;
+  }
+
+  &--theme-button {
+    padding-inline-start: 20px;
+    text-transform: inherit;
+  }
+}

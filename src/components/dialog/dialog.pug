@@ -1,0 +1,9 @@
+mixin dialog(id)
+    dialog.dialog(id=id)
+        .dialog--content
+            .dialog--image
+                svg(xmlns="http://www.w3.org/2000/svg", width="39", height="39",)
+                    use(href="../../images/svg/floppy.svg#floppy")
+            p.dialog--text Вставьте дискету, чтобы продолжить
+        include ../button/button
+        +button('submit', 'Ок', '', '', '')&attributes({'class': 'button-withImg dialog--button', 'aria-controls': "dialog-save", 'onclick': "window['dialog-save'].close();"})
